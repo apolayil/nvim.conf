@@ -19,9 +19,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+  -- vim.opt.clipboard = 'unnamedplus'
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -51,6 +51,13 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.cmd 'filetype indent on'
+
+-- Colour Column
+vim.opt.colorcolumn = '81'
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -60,5 +67,39 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+
+-- Toggle spell checking -> good for .md, who spell checks code
+vim.keymap.set('n', '<leader>ts', function()
+  vim.opt.spell = not vim.o.spell
+  print('Spell checking is', (vim.o.spell and 'enabled' or 'disabled'))
+end, { desc = '[T]oggle [S]pell' })
+
+
+
+
+-- A very yucky way of changing the theme depending of time.
+-- Checks the time and changes the theme on startup.
+-- On OSX theres a plugin for this, will but on ssh, we gotta work with this.
+function SetThemeBasedOnTime()
+  local hour = tonumber(os.date '%H')
+  local minute = tonumber(os.date '%M')
+
+  local isLightThemeTime = false
+
+  if hour > 5 and hour < 17 then
+    isLightThemeTime = true
+  elseif hour == 5 and minute >= 40 then
+    isLightThemeTime = true
+  elseif hour == 17 and minute < 40 then
+    isLightThemeTime = true
+  end
+
+  if isLightThemeTime then
+    vim.cmd [[colorscheme rose-pine-dawn]]
+  else
+    vim.cmd [[colorscheme rose-pine-moon]]
+  end
+end
 
 -- vim: ts=2 sts=2 sw=2 et
