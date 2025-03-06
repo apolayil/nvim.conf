@@ -45,4 +45,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = vim.api.nvim_create_augroup('kickstart-goto-cursor', { clear = true }),
+  desc = 'go to last file position before closing',
+  callback = function(args)
+    local valid_line = vim.fn.line [['"]] >= 1 and vim.fn.line [['"]] < vim.fn.line '$'
+    local not_commit = vim.b[args.buf].filetype ~= 'commit'
+
+    if valid_line and not_commit then
+      vim.cmd [[normal! g`"]]
+    end
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et
