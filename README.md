@@ -1,3 +1,2 @@
 My N[eo][vi]m config...
 
-
