@@ -1,10 +1,14 @@
 -- Highlight todo, notes, etc in comments
-return
-{
-  {
+
+---@module 'lazy'
+---@type LazySpec
+return {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    ---@module 'todo-comments'
+  ---@type TodoOptions
+  ---@diagnostic disable-next-line: missing-fields
     opts = {
       signs = true,
       keywords = { -- Some better colors that are better on light mode.
@@ -28,4 +32,5 @@ return
 -- WARN:
 -- NOTE:
 -- TEST:
--- REF: CSSE2310 Reference label.
+-- REF: Reference label.
+-- vim: ts=2 sts=2 sw=2 et
