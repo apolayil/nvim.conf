@@ -8,3 +8,7 @@ return {
   { 'karb94/neoscroll.nvim', opts = {} }, -- smooth ctrl + d/u etc scroll.
   { 'numToStr/Comment.nvim', opts = {} },
 }
+
+---@module 'lazy'
+---@type LazySpec
+return {}
