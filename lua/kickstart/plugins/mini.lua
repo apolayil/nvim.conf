@@ -1,47 +1,15 @@
 local function gh(repo) return 'https://github.com/' .. repo end
 
-<<<<<<< HEAD
-    -- Add/delete/replace surroundings (brackets, quotes, etc.)
-    --
-    -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-    -- - sd'   - [S]urround [D]elete [']quotes
-    -- - sr)'  - [S]urround [R]eplace [)] [']
-    require('mini.surround').setup()
-||||||| 2ea6bf6
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
-=======
 -- [[ mini.nvim ]]
 --  A collection of various small independent plugins/modules
 vim.pack.add { gh 'nvim-mini/mini.nvim' }
->>>>>>> upstream/master
 
-<<<<<<< HEAD
-    -- Simple and easy statusline.
-    --  You could remove this setup call if you don't like it,
-    --  and try some other statusline plugin
-    local statusline = require 'mini.statusline'
-    -- set use_icons to true if you have a Nerd Font
-    statusline.setup { use_icons = vim.g.have_nerd_font }
-||||||| 2ea6bf6
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-=======
 -- If a nerd font is available, load the icons module for pretty icons in various plugins.
 if vim.g.have_nerd_font then
   require('mini.icons').setup()
   -- Used for backwards compatibility with plugins that require `nvim-web-devicons` (e.g. telescope.nvim)
   MiniIcons.mock_nvim_web_devicons()
 end
->>>>>>> upstream/master
 
 -- Better Around/Inside textobjects
 --
@@ -57,11 +25,6 @@ require('mini.ai').setup {
   },
   n_lines = 500,
 }
-<<<<<<< HEAD
--- vim: ts=2 sts=2 sw=2 et
-||||||| 2ea6bf6
--- vim: ts=2 sts=2 sw=2 et
-=======
 
 -- Add/delete/replace surroundings (brackets, quotes, etc.)
 --
@@ -87,4 +50,3 @@ statusline.section_location = function() return '%2l:%-2v' end
 --  Check out: https://github.com/nvim-mini/mini.nvim
 
 -- vim: ts=2 sts=2 sw=2 et
->>>>>>> upstream/master

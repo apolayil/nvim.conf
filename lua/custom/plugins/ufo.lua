@@ -30,8 +30,21 @@ return {
       end
     end)
 
-    -- Setup ufo with provided opts. LSP server capabilities should be configured
-    -- in your LSP setup (so we avoid touching all servers here).
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+
+    -- Setup LSP servers with folding capabilities
+    local language_servers = require('lspconfig').util.available_servers()
+    for _, ls in ipairs(language_servers) do
+      require('lspconfig')[ls].setup {
+        capabilities = capabilities,
+      }
+    end
+
+    -- Setup ufo
     require('ufo').setup(opts)
   end,
 }
