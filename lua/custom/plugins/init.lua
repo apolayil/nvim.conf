@@ -9,7 +9,8 @@ local plugins = {
   { 'numToStr/Comment.nvim', opts = {} },
 }
 
--- Iterate over all Lua files in the plugins directory and load them, flattening returns
+-- Iterate over all Lua files in the plugins directory and load them.
+-- `vim.fs.dir()` iteration order is unspecified and must not be relied upon.
 local plugins_dir = vim.fs.joinpath(vim.fn.stdpath 'config', 'lua', 'custom', 'plugins')
 for file_name, ftype in vim.fs.dir(plugins_dir, { follow = true }) do
   if (ftype == 'file' or ftype == 'link') and file_name:match '%.lua$' and file_name ~= 'init.lua' then
