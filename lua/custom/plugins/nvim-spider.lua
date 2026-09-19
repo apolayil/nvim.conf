@@ -1,8 +1,5 @@
-return {
-    'chrisgrieser/nvim-spider',
-    keys = {
-        { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
-        { "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
-        { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
-    },
-}
+vim.pack.add { 'https://github.com/chrisgrieser/nvim-spider' }
+
+for _, motion in ipairs { 'w', 'e', 'b' } do
+    vim.keymap.set({ 'n', 'o', 'x' }, motion, function() require('spider').motion(motion) end)
+end

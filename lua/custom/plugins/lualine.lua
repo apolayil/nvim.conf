@@ -1,17 +1,18 @@
-return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  opts = {
-    sections = {
-      lualine_c = {
-        {
-          'buffers',
-          show_filename_only = true,
-          icons_enabled = false,
-          show_modified_status = false,
-        },
+vim.pack.add {
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/nvim-lualine/lualine.nvim',
+}
+
+require('lualine').setup {
+  sections = {
+    lualine_c = {
+      {
+        'buffers',
+        show_filename_only = true,
+        icons_enabled = false,
+        show_modified_status = false,
       },
-      lualine_x = { 'filetype' },
     },
+    lualine_x = { 'filetype' },
   },
 }

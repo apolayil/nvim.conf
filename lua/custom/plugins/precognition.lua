@@ -1,6 +1,6 @@
-return {
-  'tris203/precognition.nvim',
-  opts = {
+vim.pack.add { 'https://github.com/tris203/precognition.nvim' }
+
+require('precognition').setup {
     -- startVisible = true,
     -- showBlankVirtLine = true,
     -- highlightColor = "Comment",
@@ -23,5 +23,4 @@ return {
     --     PrevParagraph = { text = "{", prio = 1 },
     --     NextParagraph = { text = "}", prio = 1 },
     -- },
-  },
 }
